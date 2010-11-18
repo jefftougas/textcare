@@ -1,5 +1,5 @@
 xml.instruct!
 xml.Response do
-    xml.Sms @message
+    xml.Sms @response
 end
 
