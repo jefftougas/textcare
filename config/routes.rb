@@ -1,4 +1,6 @@
 Textcare::Application.routes.draw do
+  match "/sms",      :to => 'text_messages#sms', :defaults => { :format => 'xml'}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
