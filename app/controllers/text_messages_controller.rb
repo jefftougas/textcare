@@ -28,6 +28,8 @@ class TextMessagesController < ApplicationController
         patient.ailment_messages.each do |ailment|
           @response += "#{ailment.message}; "
         end
+        
+        @response = @response[0..159]
       else
         @response = "#{patientName} has no records"
       end
