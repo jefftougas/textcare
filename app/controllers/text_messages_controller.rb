@@ -14,11 +14,13 @@ class TextMessagesController < ApplicationController
 
     parsedMessage = @message.split("#")
     
+    if parsedMessage.length <= 1 # incorrect format
+      @response = "Please use the format 'patient name#patient info' to submit patient info"
+    end
+    
     patientName = parsedMessage[0] # first parameter is patient name
     
     patient = Patient.find_by_name(patientName)
-    
-    ailments = 
     
     if @message =~ doublePound # doctor requesting patient info
       if patient != nil && patient.ailment_messages != nil
