@@ -18,9 +18,14 @@ class TextMessagesController < ApplicationController
     
     patient = Patient.find_by_name(patientName)
     
+    ailments = 
+    
     if @message =~ doublePound # doctor requesting patient info
-      if patient != nil
-        @response = "#{patientName}#their info"
+      if patient != nil && patient.ailment_messages != nil
+        @response = "#{patientName}#"
+        patient.ailment_messages.each do |ailment|
+          @response += "#{ailment.message}; "
+        end
       else
         @response = "#{patientName} has no records"
       end
